@@ -14,8 +14,8 @@ To get this app running locally all you need to do is:
 4. Your local app should be available at `http://localhost:8000`
 
 ## Your Tasks
-This project includes several tasks for different skill levels. You may try completing them all but if you are new to Web Development, complete the tasks that are a bit above your level.
-You can and should learn new skills during the process, you may consult with Google and friends but you will need to explain why you implemented what you implemented, so be responsible for your code.
+This project includes several tasks for different skill levels, your goal is to complete as many as possible in the given time frame so you many want to prioritize the tasks by their difficulty level. 
+You may consult with Google but you will need to explain why you implemented what you implemented, so be responsible for your code.
 
 ### Task 1 - Image Actions
 Each image has three buttons that appear on mouse hover. You need to make them work.
@@ -30,10 +30,8 @@ Each image has three buttons that appear on mouse hover. You need to make them w
 
 ## Tips
 - All the code you should change / add will be in the `/src/components` folder.
-- You don't need to complete all tasks. If you are new to web development, finish only the easy tasks. If you have the required skills, try to complete the intermediate and hard tasks too.
-- If possible, write tests for every new feature you write (tests are written in spec.js files)
 - You can see a working demo video of the completed app [here](https://youtu.be/NW4VojSUFQc)
-- Think about the product you create, try inovating the user interface, you don't have to create the exact solution as it is in the video, or even the exacts tasks. **be creative, creative is good**.
+- Think about the product you create, try inovating the user interface, you don't have to create the exact solution as it is in the video.  Have an idea for a feature that would enhance the solution - go for it! **be creative, creative is good**.
 
 #### Remember: this test is designed to see how you complete tasks that require self learning, not to test your existing knowledge.
 
