@@ -7,7 +7,6 @@ class Image extends React.Component {
   static propTypes = {
     dto: PropTypes.object,
     galleryWidth: PropTypes.number,
-    deleteHandler:PropTypes.func
   };
 
   constructor(props) {
@@ -50,14 +49,11 @@ console.log(this.state.rotation)
           backgroundImage: `url(${this.urlFromDto(this.props.dto)})`,
           width: this.state.size + 'px',
           height: this.state.size + 'px',
-          transform: `rotate(${rotation}deg)`
+          transform: `rotate(${rotation}deg)`,
+          position:'absolute'
         }}
         >
-        <div style={{transform: `rotate(${(rotation-(rotation*2))}deg)`}}>
-          <FontAwesome className="image-icon" name="sync-alt" title="rotate" onClick={()=>{this.rotationHandler()}}  />
-          <FontAwesome className="image-icon" name="trash-alt" title="delete" onClick={()=>{this.props.deleteHandler(this.props.dto.id)}}/>
-          <FontAwesome className="image-icon" name="expand" title="expand"/>
-        </div>
+       
       </div>
     );
   }
