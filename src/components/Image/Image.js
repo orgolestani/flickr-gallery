@@ -21,16 +21,14 @@ class Image extends React.Component {
   }
 
   calcImageSize(galleryWidth) {
-    //1500 / 200 =7.5 (8 rounded -reminder 100)
     const targetSize = 200;
-    const imagesPerRow = (galleryWidth / targetSize);
-    const reminder = galleryWidth % targetSize;
-    const size = ((galleryWidth / imagesPerRow)+(reminder/imagesPerRow));
-    console.log({ size, imagesPerRow, galleryWidth, reminder });
+    const imagesPerRow = Math.round(galleryWidth / targetSize);
+    const size = galleryWidth / imagesPerRow;
     this.setState({
       size,
     });
   }
+
   componentDidMount() {
     this.calcImageSize(this.props.galleryWidth);
   }
