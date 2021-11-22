@@ -1,0 +1,17 @@
+.expand-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-container {
+  flex: 1;
+  >img{
+    aspect-ratio:16/9;
+  }
+}
+button {
+  width: 45px;
+}
