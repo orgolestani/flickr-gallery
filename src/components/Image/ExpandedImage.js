@@ -37,7 +37,6 @@ class Image extends React.Component {
   }
   rotationHandler() {
     this.setState({ rotation: this.state.rotation + 90 });
-    console.log(this.state.rotation);
   }
 
   render() {

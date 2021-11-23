@@ -11,29 +11,16 @@ class App extends React.Component {
       tag: "art",
       numberOfImages: 100,
     };
-    this.debounce.bind(this)
-  }
-  moreImages() {
-    const addImage = this.state.numberOfImages + 100;
-    this.setState({ numberOfImages: addImage });
-  }
-  
-  componentDidMount() {
- 
   }
 
-  debounce(func,timeout=300){
-    let timer;
-    return(...args)=>{
-      clearTimeout(timer);
-      
-      timer = setTimeout(() => {func.apply(this,args)}, timeout);
-    }
-  }
+  
+
+
+
   
   render() {
     return (
-      <div className="app-root" onScroll={this.handleScroll}>
+      <div className="app-root">
         <div className="app-header">
           <h2>Flickr Gallery</h2>
 

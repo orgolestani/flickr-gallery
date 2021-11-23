@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Image from "../Image";
 import Modal from "../Modal";
-import ExpandedImage from "../Image";
+import Loader from "../Loader";
 import "./Gallery.scss";
 import ExpandCarousel from "../ExpandCarousel/ExpandCarousel";
 
@@ -42,7 +42,6 @@ class Gallery extends React.Component {
   }
 
   getImages(tag, numberOfImages = 100, pageNumber = 1) {
-    // add debouncer
     const getImagesUrl = `services/rest/?method=flickr.photos.search&api_key=522c1f9009ca3609bcbaf08545f067ad&tags=${tag}&tag_mode=any&per_page=${numberOfImages}&format=json&nojsoncallback=1&page=${pageNumber}`;
     const baseUrl = "https://api.flickr.com/";
     return axios({
@@ -64,7 +63,6 @@ class Gallery extends React.Component {
   }
   resizeHandler() {
     this.setState({ galleryWidth: this.getGalleryWidth() });
-    // console.log(document.body.clientWidth);
   }
 
   deleteHandler(imageId) {
@@ -85,10 +83,9 @@ class Gallery extends React.Component {
   scrollHandler() {
     const positionY = window.scrollY;
     const height = window.innerHeight;
-    const isGetMoreImages =
+    const isNeedMoreImages =
       positionY + height >= document.body.offsetHeight - 200;
-
-    if (isGetMoreImages) {
+    if (isNeedMoreImages) {
       const newPageNumber = this.state.pageNumber + 1;
       if (this.state.isLoading) return;
       this.setState({ isLoading: true });
@@ -137,9 +134,19 @@ class Gallery extends React.Component {
     window.addEventListener("scroll", this.scrollHandler);
     window.addEventListener("resize", this.resizeHandler);
 
-    this.getImages(this.props.tag).then((images) =>
-      this.setState({ images, galleryWidth: this.getGalleryWidth() })
-    );
+    this.setState({ isLoading: true });
+    this.getImages(this.props.tag)
+      .then((images) =>
+        this.setState({
+          images,
+          galleryWidth: this.getGalleryWidth(),
+          isLoading: false,
+        })
+      )
+      .catch((err) => {
+        this.setState({ isLoading: false });
+        console.error(err);
+      });
   }
 
   componentWillReceiveProps(props) {
@@ -168,6 +175,7 @@ class Gallery extends React.Component {
             );
           })}
         </div>
+        {this.state.isLoading && <Loader />}
         <Modal isOpen={this.state.isExpanded} onClose={this.onModalClose}>
           <ExpandCarousel
             dto={this.state.imageDto}
